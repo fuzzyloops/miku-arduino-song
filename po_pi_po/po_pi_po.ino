@@ -60,7 +60,7 @@ int melody[] = {
   REST,longN, NOTE_F4,longN, NOTE_G4,longN, NOTE_A4,shortN, NOTE_G4,shortN, REST,shortN, /**/ NOTE_F4,longN, NOTE_E4,longN, NOTE_F4,longN, NOTE_E4,longN,
   NOTE_F4,longN, NOTE_E4,xLong, REST,longN, NOTE_E4,longN, NOTE_E4,longN, NOTE_E4,longN, NOTE_F4,longN, NOTE_G4,longN, NOTE_C5,longN, NOTE_B5,longN, NOTE_C5,xxLong,
   NOTE_C5,longN, NOTE_C5,longN, NOTE_C5,shortN, NOTE_C5,shortN, NOTE_C5,shortN, NOTE_C5,shortN, NOTE_C5,longN, NOTE_C5,longN, NOTE_C5,longN, NOTE_C5,longN, NOTE_B4,shortN,
-  NOTE_G4,longN, REST,longN, NOTE_D5,longN, NOTE_C4,longN, NOTE_C4,longN, NOTE_C4,longN, NOTE_C4,longN, NOTE_B4,shortN, NOTE_C4,longN, NOTE_D5,shortN, REST,shortN,
+  NOTE_G4,longN, REST,longN, /*Look through this area*/ NOTE_D5,longN, NOTE_C4,longN, NOTE_C4,longN, NOTE_C4,longN, NOTE_C4,longN, NOTE_B4,shortN, NOTE_C4,longN, NOTE_D5,shortN, REST,shortN,
   NOTE_E5,longN, /**/ NOTE_C5,longN, NOTE_C5,longN, NOTE_C5,longN, NOTE_C5,longN, NOTE_B5,shortN, NOTE_G4,longN, REST,longN, NOTE_D5,longN, NOTE_C5,longN,
   NOTE_C5,longN, NOTE_C5,longN, NOTE_C5,longN, NOTE_B5,shortN, NOTE_C5,longN, NOTE_D5,shortN, NOTE_E5,longN, NOTE_E4,xxLong, REST,longN, NOTE_D4,longN, NOTE_G4,longN,
   /**/ REST,shortN, NOTE_F4,longN, NOTE_E4,longN, NOTE_F4,longN, NOTE_E4,longN, NOTE_F4,longN, NOTE_E4,xLong, REST,longN, NOTE_E4,xLong, REST,longN, NOTE_D4,longN,
