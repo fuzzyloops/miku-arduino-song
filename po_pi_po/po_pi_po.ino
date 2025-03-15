@@ -22,6 +22,10 @@
 #define NOTE_C4 261.626
 #define NOTE_A4 440
 #define NOTE_D4 293.665
+#define NOTE_A6 1760
+#define NOTE_B6 1975.53
+#define NOTE_C6 1046.502
+#define NOTE_F5 698.46 
 
 
 #define REST      0
@@ -33,10 +37,11 @@ int tempo = 150;
 // change this to whichever pin you want to use
 int buzzer = 11;
 
-int longN = 5;
-int xLong = 3;
-int xxLong = 1;
-int shortN = 9;
+int longN = 5; //long note
+int xLong = 3; //Extra long note
+int xxLong = 1; //Extra extra long note
+int shortN = 9; //Short note
+int xShort = 14; //Extra short note
 
 
 // notes of the moledy followed by the duration.
@@ -44,7 +49,7 @@ int shortN = 9;
 // !!negative numbers are used to represent dotted notes,
 // so -4 means a dotted quarter note, that is, a quarter plus an eighteenth!!
 int melody[] = {
-  
+  /* most of the comments in this block are just me reminding myself what to do and where to look :)*/
   NOTE_C5,longN, NOTE_G4,shortN, NOTE_C5,longN, NOTE_G4,shortN, NOTE_C5,longN, NOTE_D5,longN, NOTE_G5,longN, NOTE_D5,xLong, REST,shortN,///First block
   NOTE_C5,longN, NOTE_G4,shortN, NOTE_C5,longN, NOTE_G4,shortN, NOTE_C5,longN, NOTE_D5,longN, NOTE_G5,longN, NOTE_D5,xLong, REST,shortN,///Repeat first four times
   NOTE_C5,longN, NOTE_G4,shortN, NOTE_C5,longN, NOTE_G4,shortN, NOTE_C5,longN, NOTE_D5,longN, NOTE_G5,longN, NOTE_D5,xLong, REST,shortN,
@@ -55,16 +60,30 @@ int melody[] = {
   NOTE_C5,longN, NOTE_C5,longN, NOTE_C5,longN, NOTE_C5,longN, NOTE_B4,shortN, NOTE_C5,longN, NOTE_D5,shortN, REST,shortN, NOTE_E5,longN,
   NOTE_E4,longN, REST,shortN, NOTE_E4,shortN, REST,shortN, NOTE_E4,shortN, NOTE_E4,shortN, NOTE_F4,shortN, NOTE_G4,shortN, NOTE_A4,shortN,
   NOTE_G4,shortN, NOTE_G4,shortN, REST,longN, NOTE_F4,longN, NOTE_E4,longN, NOTE_F4,longN, NOTE_E4,longN, NOTE_F4,longN, NOTE_E4,xLong, 
-  REST,longN, NOTE_F4,longN, NOTE_F4,longN, NOTE_F4,longN, NOTE_G4,longN, NOTE_A4,shortN, NOTE_B5,longN, NOTE_A4,shortN, REST,longN,
+  REST,longN, NOTE_F4,longN, NOTE_F4,longN, NOTE_F4,longN, NOTE_G4,longN, NOTE_A4,shortN, NOTE_B4,longN, NOTE_A4,shortN, REST,longN,
   NOTE_G4,longN, NOTE_F4,longN, NOTE_G4,longN, NOTE_F4,longN, REST,shortN, NOTE_C4,longN, REST,xLong, NOTE_C4,longN, NOTE_E4,longN, ///the weird part
   REST,longN, NOTE_F4,longN, NOTE_G4,longN, NOTE_A4,shortN, NOTE_G4,shortN, REST,shortN, /**/ NOTE_F4,longN, NOTE_E4,longN, NOTE_F4,longN, NOTE_E4,longN,
-  NOTE_F4,longN, NOTE_E4,xLong, REST,longN, NOTE_E4,longN, NOTE_E4,longN, NOTE_E4,longN, NOTE_F4,longN, NOTE_G4,longN, NOTE_C5,longN, NOTE_B5,longN, NOTE_C5,xxLong,
+  NOTE_F4,longN, NOTE_E4,xLong, REST,longN, NOTE_E4,longN, NOTE_E4,longN, NOTE_E4,longN, NOTE_F4,longN, NOTE_G4,longN, NOTE_C5,longN, NOTE_B4,longN, NOTE_C5,xxLong,
   NOTE_C5,longN, NOTE_C5,longN, NOTE_C5,shortN, NOTE_C5,shortN, NOTE_C5,shortN, NOTE_C5,shortN, NOTE_C5,longN, NOTE_C5,longN, NOTE_C5,longN, NOTE_C5,longN, NOTE_B4,shortN,
   NOTE_G4,longN, REST,longN, /*Look through this area*/ NOTE_D5,longN, NOTE_C4,longN, NOTE_C4,longN, NOTE_C4,longN, NOTE_C4,longN, NOTE_B4,shortN, NOTE_C4,longN, NOTE_D5,shortN, REST,shortN,
-  NOTE_E5,longN, /**/ NOTE_C5,longN, NOTE_C5,longN, NOTE_C5,longN, NOTE_C5,longN, NOTE_B5,shortN, NOTE_G4,longN, REST,longN, NOTE_D5,longN, NOTE_C5,longN,
-  NOTE_C5,longN, NOTE_C5,longN, NOTE_C5,longN, NOTE_B5,shortN, NOTE_C5,longN, NOTE_D5,shortN, NOTE_E5,longN, NOTE_E4,xxLong, REST,longN, NOTE_D4,longN, NOTE_G4,longN,
+  NOTE_E5,longN, /**/ NOTE_C5,longN, NOTE_C5,longN, NOTE_C5,longN, NOTE_C5,longN, NOTE_B4,shortN, NOTE_G4,longN, REST,longN, NOTE_D5,longN, NOTE_C5,longN,
+  NOTE_C5,longN, NOTE_C5,longN, NOTE_C5,longN, NOTE_B4,shortN, NOTE_C5,longN, NOTE_D5,shortN, NOTE_E5,longN, NOTE_E4,xxLong, REST,longN, NOTE_D4,longN, NOTE_G4,longN,
   /**/ REST,shortN, NOTE_F4,longN, NOTE_E4,longN, NOTE_F4,longN, NOTE_E4,longN, NOTE_F4,longN, NOTE_E4,xLong, REST,longN, NOTE_E4,xLong, REST,longN, NOTE_D4,longN,
-  NOTE_G4,xLong, NOTE_F4,longN, NOTE_E4,longN, NOTE_F4,longN, NOTE_E4,longN, NOTE_F4,longN, NOTE_E4,xLong,
+  NOTE_G4,xLong, NOTE_F4,longN, NOTE_E4,longN, NOTE_F4,longN, NOTE_E4,longN, NOTE_F4,longN, NOTE_E4,xLong, /**/ REST,longN, NOTE_C4,longN, REST,shortN, NOTE_C5,xLong,
+  NOTE_B4,longN, NOTE_G4,xLong, NOTE_F4,longN, NOTE_E4,longN, NOTE_F4,longN, NOTE_E4,longN, NOTE_F4,longN, NOTE_E4,xLong, NOTE_C4,xLong, REST,longN,
+  NOTE_E4,longN, NOTE_F4,longN, NOTE_G4,longN, NOTE_C5,longN, NOTE_B4,longN, REST,longN, NOTE_C5,xShort, NOTE_D5,xShort, NOTE_E5,xShort, NOTE_F5,xShort, NOTE_G5,xShort,
+  NOTE_A5,xShort, NOTE_B5,xShort, NOTE_C6,xShort, NOTE_C6,xLong, /* <-- weird part might need changes in hz*/ NOTE_C5,longN, NOTE_G4,shortN, NOTE_C5,longN, NOTE_G4,shortN, NOTE_C5,longN,
+  NOTE_D5,longN, NOTE_G5,longN, NOTE_D5,xLong, NOTE_C5,longN, NOTE_G4,shortN, NOTE_C5,longN, NOTE_G4,shortN, NOTE_C5,longN, NOTE_G4,shortN, NOTE_D5,longN, NOTE_G5,longN, NOTE_D5,xLong,
+  NOTE_B4,xLong, NOTE_C5,xLong, NOTE_D5,longN, NOTE_C5,longN, NOTE_B5,longN, NOTE_G4,longN, NOTE_C5,longN, NOTE_C5,shortN, NOTE_C5,shortN, REST,shortN, NOTE_C5,shortN, NOTE_C5,longN, NOTE_C5,longN,
+  NOTE_C5,longN, NOTE_C5,shortN, NOTE_C5,shortN, NOTE_C5,longN, NOTE_C5,longN, NOTE_G4,shortN, NOTE_C5,longN, NOTE_G4,shortN, NOTE_C5,longN, NOTE_D5,longN, NOTE_G5,longN, NOTE_D5,xLong,
+  NOTE_C5,longN, NOTE_G4,shortN, NOTE_C5,longN, NOTE_G4,shortN, NOTE_C5,longN, NOTE_D5,longN, NOTE_G5,longN, NOTE_D5,xLong, NOTE_E4,xLong, NOTE_C5,longN, NOTE_D5,longN, NOTE_C5,longN, NOTE_B5,longN, 
+  NOTE_G4,longN, NOTE_C5,longN, NOTE_C5,shortN, NOTE_C5,shortN, REST,shortN, NOTE_C5,shortN, NOTE_C5,longN, NOTE_C5,longN, NOTE_C5,longN, NOTE_C5,shortN, NOTE_C5,shortN, NOTE_C5,longN, NOTE_C5,longN,
+  NOTE_G4,shortN, NOTE_C5,longN, NOTE_G4,shortN, NOTE_C5,longN, NOTE_D5,longN, NOTE_G5,longN, NOTE_D5,xLong, NOTE_C5,longN, NOTE_G4,longN, NOTE_C5,longN, NOTE_G4,longN, NOTE_C5,longN, NOTE_D5,longN,
+  NOTE_G5,longN, NOTE_D5,xLong, NOTE_B4,xLong, NOTE_C5,xLong, NOTE_D5,longN, NOTE_C5,longN, NOTE_B5,longN, NOTE_G4,longN, NOTE_C5,longN, NOTE_C5,shortN, NOTE_C5,shortN, REST,shortN, NOTE_C5,shortN,
+  NOTE_C5,longN, NOTE_C5,longN, NOTE_C5,longN, NOTE_C5,shortN, NOTE_C5,shortN, NOTE_C5,longN, NOTE_C5,longN, NOTE_G4,shortN, NOTE_C5,longN, NOTE_G4,shortN, NOTE_C5,longN, NOTE_D5,longN, NOTE_G5,longN,
+  NOTE_D5,xLong, NOTE_C5,longN, NOTE_G4,shortN, NOTE_C5,longN, NOTE_G4,shortN, NOTE_C5,longN, NOTE_D5,longN, NOTE_G5,longN, NOTE_D5,xLong, NOTE_C5,xLong, NOTE_D5,xLong, NOTE_E5,xLong, NOTE_F5,xLong, NOTE_G5,longN,
+  NOTE_F5,shortN, NOTE_E5,xLong, NOTE_D5,longN, NOTE_C5,shortN, NOTE_B5,longN, NOTE_D5,longN, NOTE_C5,xxLong,
+
 
 
 };
