@@ -121,6 +121,8 @@ void setup() {
     // we only play the note for 90% of the duration, leaving 10% as a pause
     tone(buzzer, melody[thisNote], noteDuration * 0.9);
 
+    //incase you don't have leds comment out this section below
+
     if(melody[thisNote] >= 300 && melody[thisNote] <= 500)
     {
       digitalWrite(green, HIGH);
@@ -145,6 +147,8 @@ void setup() {
       digitalWrite(blue, LOW);
       digitalWrite(green, LOW);
     }
+
+    //
 
     // Wait for the specief duration before playing the next note.
     delay(noteDuration);
