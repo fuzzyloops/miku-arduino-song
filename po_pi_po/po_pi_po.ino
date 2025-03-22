@@ -6,6 +6,8 @@
   Original program is by https://github.com/robsoncouto/arduino-songs.
   I've just used his sketch to add my own songs.
 
+  Link to the score https://musescore.com/user/221706/scores/242886/piano-tutorial
+
 
   https://github.com/fuzzyloops :)
 */
