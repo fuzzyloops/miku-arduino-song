@@ -38,6 +38,9 @@ int tempo = 150;
 
 // change this to whichever pin you want to use
 int buzzer = 11;
+int red = 4;
+int green = 3;
+int blue = 2;
 
 int longN = 5; //long note
 int xLong = 3; //Extra long note
@@ -84,7 +87,7 @@ int melody[] = {
   NOTE_G5,longN, NOTE_D5,xLong, NOTE_B4,xLong, NOTE_C5,xLong, NOTE_D5,longN, NOTE_C5,longN, NOTE_B5,longN, NOTE_G4,longN, NOTE_C5,longN, NOTE_C5,shortN, NOTE_C5,shortN, REST,shortN, NOTE_C5,shortN,
   NOTE_C5,longN, NOTE_C5,longN, NOTE_C5,longN, NOTE_C5,shortN, NOTE_C5,shortN, NOTE_C5,longN, NOTE_C5,longN, NOTE_G4,shortN, NOTE_C5,longN, NOTE_G4,shortN, NOTE_C5,longN, NOTE_D5,longN, NOTE_G5,longN,
   NOTE_D5,xLong, NOTE_C5,longN, NOTE_G4,shortN, NOTE_C5,longN, NOTE_G4,shortN, NOTE_C5,longN, NOTE_D5,longN, NOTE_G5,longN, NOTE_D5,xLong, NOTE_C5,xLong, NOTE_D5,xLong, NOTE_E5,xLong, NOTE_F5,xLong, NOTE_G5,longN,
-  NOTE_F5,shortN, NOTE_E5,xLong, NOTE_D5,longN, NOTE_C5,shortN, NOTE_B5,longN, NOTE_D5,longN, NOTE_C5,xxLong,
+  NOTE_F5,shortN, NOTE_E5,xLong, NOTE_D5,longN, NOTE_C5,shortN, NOTE_B5,longN, NOTE_D5,longN, NOTE_C5,xxLong, REST, shortN
 
 
 
@@ -118,6 +121,31 @@ void setup() {
     // we only play the note for 90% of the duration, leaving 10% as a pause
     tone(buzzer, melody[thisNote], noteDuration * 0.9);
 
+    if(melody[thisNote] >= 300 && melody[thisNote] <= 500)
+    {
+      digitalWrite(green, HIGH);
+      digitalWrite(red, LOW);
+      digitalWrite(blue, LOW);
+    }
+    else if(melody[thisNote] > 500 && melody[thisNote] < 600)
+    {
+      digitalWrite(blue, HIGH);
+      digitalWrite(red, LOW);
+      digitalWrite(green, LOW);
+    }
+    else if(melody[thisNote] >= 600)
+    {
+      digitalWrite(red, HIGH);
+      digitalWrite(blue, LOW);
+      digitalWrite(green, LOW);
+    }
+    else
+    {
+      digitalWrite(red, LOW);
+      digitalWrite(blue, LOW);
+      digitalWrite(green, LOW);
+    }
+
     // Wait for the specief duration before playing the next note.
     delay(noteDuration);
 
@@ -127,5 +155,5 @@ void setup() {
 }
 
 void loop() {
-  // no need to repeat the melody.
+  
 }
